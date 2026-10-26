@@ -1,7 +1,7 @@
 # Собирается scripts/release.sh из packaging/homebrew/meetnote.rb.in — руками не править.
 cask "meetnote" do
-  version "1.4.2"
-  sha256 "87069e44e4f765bb7382a7bffb9d152cb71b68ff626b37078f977c95b315da1d"
+  version "1.4.3"
+  sha256 "7567d2fa1d53dc8617fd218ea75d98546dbe3b76c43100a80114a2481b72f757"
 
   url "https://github.com/dikdacksun/homebrew-meetnote/releases/download/v#{version}/MeetNote-#{version}.zip"
   name "MeetNote"
