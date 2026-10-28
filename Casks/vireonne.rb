@@ -1,21 +1,21 @@
-# Собирается scripts/release.sh из packaging/homebrew/vireonne.rb.in — руками не править.
+# Собирается scripts/release.sh из packaging/homebrew/smurno.rb.in — руками не править.
 cask "vireonne" do
-  version "1.5.1"
-  sha256 "a12b0ec91741ed6a78e25d755daffb903175a9259d8521589ce5ffd4a7fc54dc"
+  version "1.5.2"
+  sha256 "242511ba938e0cadd90c44e211ea1cabff2cfe7ee72ea2c14374f770037e7fc0"
 
-  url "https://github.com/dikdacksun/homebrew-vireonne/releases/download/v#{version}/Vireonne-#{version}.zip"
-  name "Vireonne"
+  url "https://github.com/dikdacksun/homebrew-smurno/releases/download/v#{version}/Smurno-#{version}.zip"
+  name "Smurno"
   desc "Конспекты встреч на этом Mac: запись, расшифровка, конспект, чаты по встречам"
-  homepage "https://github.com/dikdacksun/homebrew-vireonne"
+  homepage "https://github.com/dikdacksun/homebrew-smurno"
 
   depends_on macos: ">= :tahoe"
   depends_on arch: :arm64
 
-  app "Vireonne.app"
+  app "Smurno.app"
 
   # Приложение подписано сертификатом Apple Development, без нотаризации: снимаем карантин, иначе macOS не откроет его.
   postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Vireonne.app"]
+    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Smurno.app"]
   end
 
   uninstall quit: "local.telemostnotes.app"
@@ -23,10 +23,10 @@ cask "vireonne" do
   # Встречи, расшифровки и модели не удаляются даже при zap — только если удалить их вручную.
 
   caveats <<~EOS
-    Откройте Vireonne — окно «Установка моделей Vireonne» откроется само: проверит этот Mac,
-    подберёт модель и скачает её (от 13 до 27 ГБ, один раз). Дальше Vireonne работает без интернета.
+    Откройте Smurno — окно «Установка моделей Smurno» откроется само: проверит этот Mac,
+    подберёт модель и скачает её (от 13 до 27 ГБ, один раз). Дальше Smurno работает без интернета.
 
-    О новой версии Vireonne скажет сам — кнопка «Обновить» (или brew upgrade --cask vireonne).
-    Нужны Apple Silicon, macOS 26 и не меньше 16 ГБ памяти.
+    О новой версии Smurno скажет сам — кнопка «Обновить» (или brew upgrade --cask smurno).
+    Нужны Apple Silicon и macOS 26. Для конспекта на этом Mac — от 16 ГБ памяти; с меньшей памятью конспект пишет внешняя модель (Claude или ChatGPT).
   EOS
 end
